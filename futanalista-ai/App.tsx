@@ -47,7 +47,6 @@ function App() {
             </h1>
           </div>
           <div className="text-xs text-slate-500 font-mono hidden sm:block">
-            Powered by Gemini 2.5
           </div>
         </div>
       </header>
