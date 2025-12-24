@@ -21,17 +21,20 @@ jobs:
           node-version: 20
 
       - name: Install Dependencies
+        working-directory: ./futanalista-ai
         run: npm install
 
       - name: Create .env file
+        working-directory: ./futanalista-ai
         run: echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" > .env
 
       - name: Build
+        working-directory: ./futanalista-ai
         run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist
+          folder: futanalista-ai/dist
           branch: gh-pages
           token: ${{ secrets.GITHUB_TOKEN }}
