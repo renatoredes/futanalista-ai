@@ -266,7 +266,7 @@ export const fetchMatchAnalysis = async (teamName: string): Promise<AnalysisData
 
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: "gemini-1.5-flash",
       contents: prompt,
       config: {
         tools: [{ googleSearch: {} }],
@@ -305,8 +305,9 @@ export const fetchMatchAnalysis = async (teamName: string): Promise<AnalysisData
 
     return finalData;
 
-  } catch (error) {
+  } catch (error: any) {
     console.error("Gemini API Error:", error);
-    throw new Error("Failed to generate analysis. Please try again.");
+    const errorMessage = error.message || error.toString();
+    throw new Error(`Falha na análise: ${errorMessage}`);
   }
 };
